@@ -1,0 +1,28 @@
+{{extend './common/layout.art'}} 
+{{block 'main'}}
+<!-- 头部 -->
+{{include './common/header.art'}}
+<!-- /头部 -->
+<!-- 主体内容 -->
+<div class="content">
+  <!-- 侧边栏 -->
+  {{include './common/aside.art'}}
+  <!-- 侧边栏 -->
+  <div class="main">
+    <div class="analyseBox">
+    <h2 class='analyseTitle'>销售分析——(单位：元)</h2>
+      <ul class='analyse'>
+
+        <% for(var i = 0; i < movies.length; i++){ %>
+          <li style="left:{{(i+1)*70}}px">
+            <span>{{(movies[i].seatNum.movieSeatNum-movies[i].oldSeatNum)*movies[i].price}}</span>
+            <div style="height:{{(movies[i].seatNum.movieSeatNum-movies[i].oldSeatNum)*movies[i].price*0.5}};
+  background-color: salmon; "></div>
+            <span>{{movies[i].title}}</span>
+          </li>
+        <% } %>
+       
+      </ul>
+    </div>
+  </div>
+{{/block}}

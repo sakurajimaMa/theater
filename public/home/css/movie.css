@@ -1,0 +1,296 @@
+/* 文章框架开始 */
+.movie {
+  margin-top: 15px;
+}
+.movie .w1100 {
+  overflow: hidden;
+}
+/* 文章框架结束 */
+
+/* 内容框架开始 */
+
+.movie .container {
+  padding: 30px 40px 20px;
+  background: #fff;
+}
+/* 内容框架结束 */
+
+/* 文章开始 */
+.movie-header {
+  margin-bottom: 20px;
+}
+
+.movie-header h3 {
+  transition: all 0.2s;
+}
+
+.movie-header h3:hover {
+  color: #ff7300;
+}
+
+.movie-content {
+  margin-bottom: 20px;
+}
+
+/* 文章结束 */
+
+/* 侧边栏框架开始 */
+.aside {
+  width: 300px;
+  background: #fcfcfc;
+}
+
+.aside .container {
+  padding: 30px 40px 20px;
+}
+
+/* 侧边栏框架结束 */
+
+/* 侧边栏内容开始 */
+.section {
+}
+
+.section h4 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.links {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.links li {
+  color: #787878;
+  margin-bottom: 8px;
+}
+
+.links li a {
+  color: inherit;
+}
+
+.links li a:hover {
+  color: #ff7300;
+}
+
+/* 侧边栏内容结束 */
+
+/* 评论开始 */
+.movie-comment {
+}
+
+.movie-comment h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.movie-comment .comment {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+.comment-form {
+  margin-top: 15px;
+}
+
+.comment-form .items {
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.comment-form .items span,
+.comment-form .items input[type="text"] {
+  height: 22px;
+  line-height: 22px;
+}
+
+.comment-form .items span {
+  float: left;
+  width: 40px;
+}
+
+.comment-form .items input[type="text"] {
+  float: left;
+  width: 300px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+}
+
+.comment-form .items input[type="submit"] {
+  width: 100px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.comment-list {
+  margin-top: 30px;
+}
+
+.comment-content {
+  line-height: 22px;
+  margin-top: 5px;
+}
+
+/* 评论结束 */
+/* 图片详请开始 */
+.movie-imgBox {
+  display: inline-block;
+}
+.movie-img {
+  width: 150px;
+  height: 200px;
+}
+
+/* 图片详情结束 */
+.movie-content::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.movie-intro {
+  margin-left: 40px;
+  font-size: 20px;
+}
+.price {
+  font-size: 30px;
+  color: #ff7300;
+}
+.movie-buyBox {
+  width: 100%;
+  position: relative;
+  bottom: 2px;
+  right: 2px;
+  margin: 10px 0;
+}
+.movie-buyBox::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.movie-buy {
+  background-color: rgb(28, 106, 231);
+  color: white;
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.restSeat {
+  font-size: 14px;
+  line-height: 50px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+.color {
+  color: #ff7300;
+}
+/* 购票数据开始 */
+.ticketBgc {
+  background-color: rgba(252, 252, 252, 0.986);
+}
+.infoTitle {
+  width: 100%;
+  text-align: center;
+  margin: 30px auto;
+}
+.ticketList {
+  width: 95%;
+  margin: 0 auto;
+}
+.ticketBox {
+  height: 70px;
+  border-radius: 6px;
+  background-color: #fff;
+  line-height: 70px;
+  width: 100%;
+  margin: 10px 0;
+}
+.ticket {
+  height: 100%;
+  display: flex;
+  font-size: 15px;
+}
+.movieName {
+  flex: 1;
+  text-align: center;
+  overflow: hidden;
+}
+.publishDate {
+  flex: 2;
+  text-align: center;
+}
+.ticketPrice {
+  flex: 0.5;
+  text-align: center;
+}
+.returnTicket {
+  flex: 0.5;
+  text-align: center;
+}
+.returnBtn {
+  background-color: rgb(57, 129, 245);
+  border-radius: 6px;
+  font-size: 18px;
+  color: white;
+}
+/* 购票数据结束 */
+/* 选座开始 */
+.curtain {
+  background-color: rgba(236, 231, 231, 0.5);
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+}
+.chooseBox {
+  background-color: #fff;
+  width: 700px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.chooseHeader {
+  margin: 10px 30px;
+  text-align: center;
+  font-size: 18px;
+}
+.chooseTitle {
+  font-weight: bold;
+}
+.close {
+  cursor: pointer;
+}
+.chooseSeat {
+  padding: 30px;
+}
+.seat {
+  display: flex;
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.modal-content {
+  display: block;
+  height: 50px;
+}
+/* 选座结束 */

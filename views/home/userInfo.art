@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>个人页面</title>
+    <link rel="stylesheet" href="/home/css/base.css" />
+    <link rel="stylesheet" href="/home/css/movie.css" />
+    <link rel="stylesheet" href="/home/css/index.css" />
+  </head>
+  <body>
+    <!-- 头部框架开始 -->
+    <div class="header">
+      <div class="w1100">
+        <!-- 网站logo开始 -->
+        <h1 class="logo fl">
+          <a href="/home" class="theater">伍号 剧院</a>
+        </h1>
+        <!-- 网站logo结束 -->
+        <!-- 网站导航开始 -->
+        <ul class="navigation fr">
+          <li>
+            <a href="/home">首页</a>
+          </li>
+          {{if !userInfo}}
+          <li>
+            <a href="/admin">登录</a>
+          </li>
+          {{else}}
+          <li>
+            <a href="/home/userInfo">{{userInfo.username}}</a>
+          </li>
+          <li>
+            <a href="/home/logout">退出登录</a>
+          </li>
+          {{/if}} 
+        </ul>
+        <!-- 网站导航结束 -->
+      </div>
+    </div>
+    <!-- 头部框架结束 -->
+    <!-- 购票数据开始 -->
+    <div class="w980 ticketBgc">
+      <h2 class="infoTitle">购票详情</h2>
+      <ul class="ticketList">
+        {{each tickets}}
+        <li class="ticketBox">
+          <div class="ticket">
+            <span class="movieName">电影名：{{$value.mid.title}}</span>
+            <span class="publishDate"
+              >上映时间：{{dateformat($value.mid.publishDate, "yyyy, mmmm dS, dddd, h:MM:ss TT")}}</span
+            >
+            <span class="ticketPrice">票价：￥{{$value.mid.price}}</span>
+           
+            <a class="returnTicket returnBtn" href="/home/returnTicket?id={{@$value._id}}&mid={{@$value.mid._id}}&sid={{@$value.sid}}">退票</a>
+          </div>
+        </li>
+        {{/each}}
+        
+        
+      </ul>
+    </div>
+    <!-- 购票数据结束 -->
+    <!-- 分页开始 -->
+    <ul class="page w1100">
+      <li
+        class="pagination"
+        style="display: <%= page-1 <= 0 ? 'none' : 'inline' %>"
+      >
+        <a href="/home/userInfo?page=<%=page-1%>">
+          <span>&laquo;</span>
+        </a>
+      </li>
+      <% for(var i = 1; i <= total; i++){ %>
+      <li class="pagination"><a href="/home/userInfo?page=<%=i%>">{{i}}</a></li>
+      <% } %>
+      <li
+        class="pagination"
+        style="display: <%= page-0+1 > total ? 'none' : 'inline' %>"
+      >
+        <a href="/home/userInfo?page=<%=page-0+1%>">
+          <span>&raquo;</span>
+        </a>
+      </li>
+    </ul>
+    <!-- 分页结束 -->
+  </body>
+</html>

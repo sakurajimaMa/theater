@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>首页</title>
+    <link rel="stylesheet" href="/home/css/base.css" />
+    <link rel="stylesheet" href="/home/css/index.css" />
+  </head>
+  <body>
+    <!-- 头部框架开始 -->
+    <div class="header">
+      <div class="w1100">
+        <!-- 网站logo开始 -->
+        <h1 class="logo fl">
+          <a href="/home" class="theater">伍号 剧院</a>
+        </h1>
+        <!-- 网站logo结束 -->
+        <!-- 网站导航开始 -->
+        <ul class="navigation fr">
+          <li>
+            <a class="active" href="/home">首页</a>
+          </li>
+          {{if !userInfo}}
+          <li>
+            <a href="/admin">登录</a>
+          </li>
+          {{else}}
+          <li>
+            <a href="/home/userInfo">{{userInfo.username}}</a>
+          </li>
+          <li>
+            <a href="/home/logout">退出登录</a>
+          </li>
+          {{/if}} 
+          
+        </ul>
+        <!-- 网站导航结束 -->
+      </div>
+    </div>
+    <!-- 头部框架结束 -->
+    <!-- 文章列表开始 -->
+    <ul class="list w1100">
+      {{each movies}}
+      <li class="relative clearfix">
+        <a href="/home/movieInfo?id={{@$value._id}}" class="thumbnail fl">
+          <img class="image" src="{{$value.cover}}" />
+        </a>
+        <div class="content fl">
+          <span class="movie-title" href="/home/movieInfo?id={{@$value._id}}"> {{$value.title}} </span>
+          <span class="movie-price fr">￥ {{$value.price}} </span>
+          <div class="movie-info">
+            <span class="author">{{$value.mainActor}}</span>
+            <span> {{dateformat($value.publishDate, "yyyy, mmmm dS, dddd,  h:MM:ss TT")}} </span>
+            <span> {{$value.movieType}} </span>
+          </div>
+          <div class="brief">
+            {{@$value.content.replace(/<[^>]+>/g, '').substr(0, 90)+'...'}}
+          </div>
+        </div>
+        <a class="btn" href="/home/movieInfo?id={{@$value._id}}">购买门票</a>
+      </li>
+      {{/each}}
+    </ul>
+    <!-- 文章列表结束 -->
+
+    <!-- 分页开始 -->
+    <ul class="page w1100">
+      <li
+        class="pagination"
+        style="display: <%= page-1 <= 0 ? 'none' : 'inline' %>"
+      >
+        <a href="/home?page=<%=page-1%>">
+          <span>&laquo;</span>
+        </a>
+      </li>
+      <% for(var i = 1; i <= total; i++){ %>
+      <li class="pagination"><a href="/home?page=<%=i%>">{{i}}</a></li>
+      <% } %>
+      <li
+        class="pagination"
+        style="display: <%= page-0+1 > total ? 'none' : 'inline' %>"
+      >
+        <a href="/home?page=<%=page-0+1%>">
+          <span>&raquo;</span>
+        </a>
+      </li>
+    </ul>
+    <!-- 分页结束 -->
+  </body>
+</html>
